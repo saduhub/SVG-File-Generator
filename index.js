@@ -2,7 +2,8 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 // Import constructor classes
-const Circle = require('./lib/Circle')
+const Circle = require('./lib/Circle');
+const Square = require('./lib/Square');
 // Array of questions for user input
 const questions = [
     {
@@ -51,6 +52,10 @@ function init() {
       const newCircle = new Circle(answers.shape, answers.fill, answers.textColor, answers.text);
       const svgCircle = newCircle.generate()
       writeToFile(svgCircle);
+    } else if (answers.shape == 'square') {
+      const newSquare = new Square(answers.shape, answers.fill, answers.textColor, answers.text);
+      const svgSquare = newSquare.generate()
+      writeToFile(svgSquare);
     }
 });
 }
