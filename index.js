@@ -35,11 +35,11 @@ const questions = [
 
 // Function to write README file
 function writeToFile (info) {
-    fs.writeFile('examples/itactuallyworked.svg', info, (err) => {
+    fs.writeFile('examples/logo.svg', info, (err) => {
         if (err) {
           console.error(err);
         } else {
-          console.log('SVG file generated successfully!');
+          console.log('Generated logo.svg');
         }
     });
 }
@@ -51,15 +51,15 @@ function init() {
 
     if (answers.shape == 'circle') {
       const newCircle = new Circle(answers.shape, answers.fill, answers.textColor, answers.text);
-      const svgCircle = newCircle.generate()
+      const svgCircle = newCircle.render()
       writeToFile(svgCircle);
     } else if (answers.shape == 'square') {
       const newSquare = new Square(answers.shape, answers.fill, answers.textColor, answers.text);
-      const svgSquare = newSquare.generate()
+      const svgSquare = newSquare.render()
       writeToFile(svgSquare);
     } else if (answers.shape == 'triangle') {
       const newTriangle = new Triangle(answers.shape, answers.fill, answers.textColor, answers.text);
-      const svgTriangle = newTriangle.generate()
+      const svgTriangle = newTriangle.render()
       writeToFile(svgTriangle);
     }
 });
