@@ -1,16 +1,27 @@
 // Packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+// Data needed for this application
+const svgColors = require('./lib/seed data/svgColors');
 // Import constructor classes
 const Circle = require('./lib/Circle');
 const Square = require('./lib/Square');
 const Triangle = require('./lib/Triangle');
+// Inquirer Validation
+function validateText(input) {
+  if (input.length <= 3) {
+    return true;
+  } else {
+    return 'Please enter up to three characters.';
+  } 
+}
 // Array of questions for user input
 const questions = [
     {
       type: 'input',
       name: 'text',
       message: 'Please enter logo text',
+      validate: validateText,
     },
     {
       type: 'input',
@@ -40,6 +51,7 @@ function writeToFile (info) {
           console.error(err);
         } else {
           console.log('Generated logo.svg');
+          console.log(svgColors[3]);
         }
     });
 }
