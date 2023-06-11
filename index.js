@@ -1,20 +1,13 @@
 // Packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-// Data needed for this application
-const svgColors = require('./lib/seed data/svgColors');
 // Import constructor classes
-const Circle = require('./lib/clases/Circle');
-const Square = require('./lib/clases/Square');
-const Triangle = require('./lib/clases/Triangle');
-// Inquirer Validation
-function validateText(input) {
-  if (input.length <= 3) {
-    return true;
-  } else {
-    return 'Please enter up to three characters.';
-  } 
-}
+const Circle = require('./lib/classes/Circle');
+const Square = require('./lib/classes/Square');
+const Triangle = require('./lib/classes/Triangle');
+// Import validation that Inquirer will use (destructured)
+// Can also import whole document, and use dot notation to acces the individual functions.
+const { validateText, validateTextColor, validateFillColor } = require('./lib/validation/inquirerValidation');
 // Array of questions for user input
 const questions = [
     {
@@ -27,6 +20,7 @@ const questions = [
       type: 'input',
       name: 'textColor',
       message: 'Please enter text color (hex or color keyword)',
+      validate: validateTextColor,
     },
     {
       type: 'list',
@@ -41,6 +35,7 @@ const questions = [
       type: 'input',
       name: 'fill',
       message: 'Please enter shape fill color (hex or color keyword)',
+      validate: validateFillColor,
     },
   ];
 
@@ -51,7 +46,6 @@ function writeToFile (info) {
           console.error(err);
         } else {
           console.log('Generated logo.svg');
-          console.log(svgColors[3]);
         }
     });
 }
