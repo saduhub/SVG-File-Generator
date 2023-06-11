@@ -4,9 +4,9 @@ const inquirer = require('inquirer');
 // Data needed for this application
 const svgColors = require('./lib/seed data/svgColors');
 // Import constructor classes
-const Circle = require('./lib/Circle');
-const Square = require('./lib/Square');
-const Triangle = require('./lib/Triangle');
+const Circle = require('./lib/clases/Circle');
+const Square = require('./lib/clases/Square');
+const Triangle = require('./lib/clases/Triangle');
 // Inquirer Validation
 function validateText(input) {
   if (input.length <= 3) {
